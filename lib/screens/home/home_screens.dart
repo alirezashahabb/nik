@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nikeshop/data/repositroy/baneers_repositroy.dart';
 import 'package:nikeshop/data/repositroy/product_repositroy.dart';
 import 'package:nikeshop/screens/home/bloc/home_bloc.dart';
+import 'package:nikeshop/widgets/slider.dart';
 
 class HomeScreens extends StatelessWidget {
   const HomeScreens({super.key});
@@ -24,15 +25,23 @@ class HomeScreens extends StatelessWidget {
             if (state is HomeSuccusesState) {
               return SafeArea(
                 child: ListView.builder(
-                  padding: const EdgeInsets.fromLTRB(12, 12, 12, 100),
                   itemCount: 5,
                   itemBuilder: (context, index) {
                     switch (index) {
                       case 0:
-                        return Image.asset(
-                          'assets/img/nike_logo.png',
-                          width: 32,
-                          height: 32,
+                        return Container(
+                          height: 56,
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            'assets/img/nike_logo.png',
+                            height: 32,
+                            fit: BoxFit.fitHeight,
+                          ),
+                        );
+
+                      case 2:
+                        return SliderBanners(
+                          banners: state.banners,
                         );
 
                       default:
