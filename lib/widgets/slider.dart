@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nikeshop/theme.dart';
+import 'package:nikeshop/utils/cached_image.dart';
+import 'package:nikeshop/utils/commome.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../model/banners.dart';
-import '../utils/cached_image.dart';
 
 class SliderBanners extends StatelessWidget {
   final List<BannersList> banners;
@@ -24,6 +25,7 @@ class SliderBanners extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           children: [
             PageView.builder(
+              physics: defultScroll,
               controller: controller,
               itemCount: banners.length,
               itemBuilder: (context, index) {
@@ -38,7 +40,7 @@ class SliderBanners extends StatelessWidget {
               count: banners.length,
               effect: const ExpandingDotsEffect(
                   dotWidth: 8,
-                  dotHeight: 8,
+                  dotHeight: 4,
                   activeDotColor: LightThemColor.primaryTetxColor),
             )
           ],
