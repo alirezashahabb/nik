@@ -63,7 +63,7 @@ class HomeScreens extends StatelessWidget {
                         BlocProvider.of<HomeBloc>(context)
                             .add(HomeRefreshEvent());
                       },
-                      child: const Text('تلاش مجدد'),
+                      child: const Text(' مجدد'),
                     )
                   ],
                 ),
