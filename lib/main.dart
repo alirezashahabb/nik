@@ -30,6 +30,10 @@ class MyApp extends StatelessWidget {
 
           /// this is for Colors on applictions
           textTheme: TextTheme(
+            titleMedium: defultTextStyle.apply(
+              color: LightThemColor.secoundrTextColor,
+            ),
+            labelLarge: defultTextStyle,
             bodyMedium: defultTextStyle,
             titleLarge: defultTextStyle,
             bodySmall: defultTextStyle.copyWith(
