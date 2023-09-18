@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nikeshop/data/repositroy/baneers_repositroy.dart';
 import 'package:nikeshop/data/repositroy/product_repositroy.dart';
 import 'package:nikeshop/model/products.dart';
 import 'package:nikeshop/screens/home/bloc/home_bloc.dart';
-import 'package:nikeshop/utils/cached_image.dart';
+import 'package:nikeshop/screens/products/products_items.dart';
 import 'package:nikeshop/utils/commome.dart';
 import 'package:nikeshop/widgets/slider.dart';
 
@@ -142,71 +141,10 @@ class _HorizantalProductsList extends StatelessWidget {
               itemCount: products.length,
               itemBuilder: (context, index) {
                 final product = products[index];
-                return Container(
-                  margin: const EdgeInsets.all(4),
-                  child: SizedBox(
-                    width: 176,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Stack(
-                          children: [
-                            SizedBox(
-                              width: 176,
-                              height: 176,
-                              child: CachedImageService(
-                                imageurl: product.imageUrl,
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                            Positioned(
-                              right: 8,
-                              top: 8,
-                              child: Container(
-                                width: 32,
-                                height: 32,
-                                alignment: Alignment.center,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  CupertinoIcons.heart,
-                                  size: 20,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 12),
-                          child: Text(
-                            product.title,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 12),
-                          child: Text(
-                            product.privoucePrice.withPriceLable,
-                            style: them.textTheme.bodySmall!.copyWith(
-                              decoration: TextDecoration.lineThrough,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 12),
-                          child: Text(
-                            product.price.withPriceLable,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                return Products(
+                  product: product,
+                  them: them,
+                  borderRadius: BorderRadius.circular(12),
                 );
               },
             ),
