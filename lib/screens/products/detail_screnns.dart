@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nikeshop/model/products.dart';
+import 'package:nikeshop/screens/products/comments/comment_list.dart';
 import 'package:nikeshop/theme.dart';
 import 'package:nikeshop/utils/cached_image.dart';
 import 'package:nikeshop/utils/commome.dart';
@@ -22,6 +23,7 @@ class ProductsDetailScreens extends StatelessWidget {
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: CustomScrollView(
+          physics: defultScroll,
           slivers: [
             SliverAppBar(
               expandedHeight: MediaQuery.of(context).size.width * 0.8,
@@ -79,6 +81,9 @@ class ProductsDetailScreens extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+            CommentList(
+              productId: products.id,
             )
           ],
         ),

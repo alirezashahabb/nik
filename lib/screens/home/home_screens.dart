@@ -8,6 +8,8 @@ import 'package:nikeshop/screens/products/products_items.dart';
 import 'package:nikeshop/utils/commome.dart';
 import 'package:nikeshop/widgets/slider.dart';
 
+import '../../utils/error.dart';
+
 class HomeScreens extends StatelessWidget {
   const HomeScreens({super.key});
 
@@ -72,18 +74,11 @@ class HomeScreens extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             } else if (state is HomeErorrState) {
               return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(state.exption.message),
-                    ElevatedButton(
-                      onPressed: () {
-                        BlocProvider.of<HomeBloc>(context)
-                            .add(HomeRefreshEvent());
-                      },
-                      child: const Text('تلاش محجدد'),
-                    )
-                  ],
+                child: ErorrButtom(
+                  exption: state.exption,
+                  onTap: () {
+                    BlocProvider.of<HomeBloc>(context).add(HomeRefreshEvent());
+                  },
                 ),
               );
             } else {

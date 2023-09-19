@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nikeshop/data/repositroy/baneers_repositroy.dart';
+import 'package:nikeshop/data/repositroy/comemnt_repositroy.dart';
 import 'package:nikeshop/screens/home/home_screens.dart';
 import 'package:nikeshop/theme.dart';
 
@@ -12,11 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bannersRepository.getBannersRepositroy().then((value) {
+    commentRepositroy.getComment(9).then((value) {
       debugPrint(value.toString());
     }).catchError((err) {
       debugPrint(err);
     });
+
     const defultTextStyle = TextStyle(
       fontFamily: 'Iran',
       color: LightThemColor.primaryTetxColor,
