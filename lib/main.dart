@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nikeshop/data/repositroy/comemnt_repositroy.dart';
-import 'package:nikeshop/screens/home/home_screens.dart';
+import 'package:nikeshop/screens/root.dart';
 import 'package:nikeshop/theme.dart';
 
 void main() {
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
               onSecondary: Colors.white)),
       home: const Directionality(
         textDirection: TextDirection.rtl,
-        child: HomeScreens(),
+        child: RootScreens(),
       ),
     );
   }
