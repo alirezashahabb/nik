@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:nikeshop/data/repositroy/auth_repositroy.dart';
 import 'package:nikeshop/data/repositroy/comemnt_repositroy.dart';
 import 'package:nikeshop/screens/Auth/Auth_screen.dart';
 import 'package:nikeshop/theme.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  /// this is for shareperfance
+  authRepositroy.loadAuthInfo();
   runApp(const MyApp());
 }
 
