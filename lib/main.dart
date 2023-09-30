@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nikeshop/data/repositroy/auth_repositroy.dart';
 import 'package:nikeshop/data/repositroy/comemnt_repositroy.dart';
-import 'package:nikeshop/screens/Auth/Auth_screen.dart';
+import 'package:nikeshop/screens/root.dart';
 import 'package:nikeshop/theme.dart';
 
 void main() {
@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
               onSecondary: Colors.white)),
       home: const Directionality(
         textDirection: TextDirection.rtl,
-        child: AuthScreens(),
+        child: RootScreens(),
       ),
     );
   }

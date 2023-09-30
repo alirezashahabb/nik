@@ -10,6 +10,7 @@ abstract class IAuthRepositry {
   Future<void> login(String userName, String password);
   Future<void> signUp(String userName, String password);
   Future<void> refreshToken();
+  Future<void> clearToken();
 }
 
 class AuthRepositry implements IAuthRepositry {
@@ -27,13 +28,9 @@ class AuthRepositry implements IAuthRepositry {
 
   @override
   Future<void> signUp(String userName, String password) async {
-    try {
-      final AuthInfo authInfo = await dataSorce.register(userName, password);
-      saveToken(authInfo);
-      debugPrint('accses token    ///// ${authInfo.accsesToken}');
-    } catch (e) {
-      debugPrint(e.toString());
-    }
+    final AuthInfo authInfo = await dataSorce.register(userName, password);
+    saveToken(authInfo);
+    debugPrint('accses token    ///// ${authInfo.accsesToken}');
   }
 
   /// get refresh token
@@ -56,6 +53,7 @@ class AuthRepositry implements IAuthRepositry {
         await SharedPreferences.getInstance();
     sharedPreferences.setString('access_token', authInfo.accsesToken);
     sharedPreferences.setString('refresh_token', authInfo.refreshToken);
+    loadAuthInfo();
   }
 
   /// save to RAM
@@ -75,5 +73,14 @@ class AuthRepositry implements IAuthRepositry {
     } catch (e) {
       debugPrint(e.toString());
     }
+  }
+
+  @override
+  Future<void> clearToken() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+
+    sharedPreferences.clear();
+    authCahngeNotifire.value = null;
   }
 }
